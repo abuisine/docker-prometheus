@@ -1,16 +1,16 @@
 global:
-  scrape_interval: 15s
-  scrape_timeout: 10s
-  evaluation_interval: 15s
+  scrape_interval: ${SCRAPE_INTERVAL}
+  scrape_timeout: ${SCRAPE_TIMEOUT}
+  evaluation_interval: ${EVALUATION_INTERVAL}
   external_labels:
     monitor: codelab-monitor
 scrape_configs:
 - job_name: prometheus
-  scrape_interval: 15s
-  scrape_timeout: 10s
+  scrape_interval: ${SCRAPE_INTERVAL}
+  scrape_timeout: ${SCRAPE_TIMEOUT}
   metrics_path: /metrics
   scheme: http
   file_sd_configs:
   - files:
-    - /prom-rancher-sd-data/rancher.json
-    refresh_interval: 2m
+    - ${SERVICE_DISCOVERY_FILE}
+    refresh_interval: ${SERVICE_DISCOVERY_REFRESH_INTERVAL}
